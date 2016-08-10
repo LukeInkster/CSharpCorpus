@@ -1,0 +1,5 @@
+DataAdapterBaseTest.cs
+DbConfig.cs
+MsSqlDbAdapterTest.cs
+OracleDbAdapterTest.cs
+SectionHandler.cs

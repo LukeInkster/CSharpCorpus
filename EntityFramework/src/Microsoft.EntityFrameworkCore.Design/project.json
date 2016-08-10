@@ -1,0 +1,59 @@
+{
+  "version": "1.0.0-preview3-*",
+  "description": "Design-time components for Entity Framework Core tools",
+  "packOptions": {
+    "tags": [
+      "Entity Framework Core",
+      "entity-framework-core",
+      "EF",
+      "Data",
+      "O/RM"
+    ],
+    "files": [
+      "lib/"
+    ]
+  },
+  "buildOptions": {
+    "emitEntryPoint": true,
+    "warningsAsErrors": true,
+    "keyFile": "../../tools/Key.snk",
+    "nowarn": [
+      "CS1591"
+    ],
+    "xmlDoc": true,
+    "compile": {
+      "include": [
+        "../Shared/CodeAnnotations.cs",
+        "../Shared/Check.cs",
+        "../Shared/LoggingExtensions.cs"
+      ]
+    }
+  },
+  "dependencies": {
+    "Microsoft.Extensions.CommandLineUtils": "1.1.0-*",
+    "Microsoft.EntityFrameworkCore.Design.Core": "1.0.0-*"
+  },
+  "configurations": {
+    "debug_x86": {
+      "buildOptions": {
+        "platform": "anycpu32bitpreferred"
+      }
+    },
+    "release_x86": {
+      "buildOptions": {
+        "platform": "anycpu32bitpreferred"
+      }
+    }
+  },
+  "frameworks": {
+    "net451": {},
+    "netcoreapp1.0": {
+      "dependencies": {
+        "Microsoft.NETCore.App": {
+          "version": "1.0.0-*",
+          "type": "platform"
+        }
+      }
+    }
+  }
+}

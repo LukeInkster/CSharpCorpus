@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+if [[ $UID -eq 0 ]]; then
+  echo "Please don't run SparkleShare as root. Things would go utterly wrong."
+  exit 1
+fi
+
+case $1 in
+  open|--open)
+    invite=`date -u +%N`
+    open=`echo $2 | sed 's/sparkleshare:\/\/addProject\///'`
+    curl --insecure --output ~/SparkleShare/.$invite.xml $open
+    mono "@expanded_libdir@/@PACKAGE@/SparkleShare.exe"
+    ;;
+  help|--help|version|--version)
+    mono "@expanded_libdir@/@PACKAGE@/SparkleShare.exe" help
+    ;;
+  *)
+    mono "@expanded_libdir@/@PACKAGE@/SparkleShare.exe" $2
+    ;;
+esac

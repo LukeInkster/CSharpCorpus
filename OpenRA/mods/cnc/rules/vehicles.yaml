@@ -1,0 +1,554 @@
+MCV:
+	Inherits: ^Vehicle
+	Valued:
+		Cost: 4000
+	Tooltip:
+		Name: Mobile Construction Vehicle
+		Description: Deploys into another Construction Yard.\n  Unarmed
+	Buildable:
+		BuildPaletteOrder: 100
+		Prerequisites: anyhq, ~techlevel.medium, fix
+		Queue: Vehicle.GDI, Vehicle.Nod
+	Selectable:
+		Priority: 4
+	Mobile:
+		Speed: 71
+		Crushes: crate, infantry
+	Health:
+		HP: 1200
+	Armor:
+		Type: Heavy
+	RevealsShroud:
+		Range: 8c0
+	Transforms:
+		IntoActor: fact
+		Offset: -1,-1
+		Facing: 108
+		TransformSounds: constru2.aud, hvydoor1.aud
+		NoTransformNotification: BuildingCannotPlaceAudio
+	MustBeDestroyed:
+		RequiredForShortGame: true
+	BaseBuilding:
+	SpawnActorOnDeath:
+		Actor: MCV.Husk
+	-GainsExperience:
+	-Cloak:
+	SelectionDecorations:
+		VisualBounds: 36,36
+
+HARV:
+	Inherits: ^Tank
+	Valued:
+		Cost: 1000
+	Tooltip:
+		Name: Harvester
+		GenericName: Harvester
+		Description: Collects Tiberium for processing.\n  Unarmed
+	Buildable:
+		BuildPaletteOrder: 10
+		Prerequisites: proc
+		Queue: Vehicle.GDI, Vehicle.Nod
+	Selectable:
+		Priority: 7
+	Harvester:
+		Resources: Tiberium, BlueTiberium
+		PipCount: 7
+		Capacity: 20
+		BaleLoadDelay: 12
+		BaleUnloadDelay: 6
+		SearchFromProcRadius: 25
+		SearchFromOrderRadius: 15
+	Mobile:
+		Speed: 85
+	Health:
+		HP: 600
+	Armor:
+		Type: Heavy
+	RevealsShroud:
+		Range: 4c0
+	SpawnActorOnDeath:
+		Actor: HARV.Husk
+	-GainsExperience:
+	WithHarvestAnimation:
+	WithDockingAnimation:
+	Explodes:
+		Weapon: TiberiumExplosion
+	SelectionDecorations:
+		VisualBounds: 36,36
+
+APC:
+	Inherits: ^Tank
+	Valued:
+		Cost: 600
+	Tooltip:
+		Name: APC
+		Description: Armed infantry transport.\nCan attack Aircraft.\n  Strong vs Vehicles\n  Weak vs Infantry
+	Buildable:
+		BuildPaletteOrder: 30
+		Prerequisites: pyle
+		Queue: Vehicle.GDI
+	Mobile:
+		UpgradeTypes: notmobile
+		UpgradeMaxEnabledLevel: 0
+		TurnSpeed: 8
+		Speed: 128
+	Health:
+		HP: 210
+	Armor:
+		Type: Heavy
+	RevealsShroud:
+		Range: 7c0
+	Turreted:
+		TurnSpeed: 10
+	Armament@PRIMARY:
+		Weapon: APCGun
+		Recoil: 96
+		RecoilRecovery: 18
+		LocalOffset: 85,85,299, 85,-85,299
+		MuzzleSequence: muzzle
+	Armament@SECONDARY:
+		Name: secondary
+		Weapon: APCGun.AA
+		Recoil: 96
+		RecoilRecovery: 18
+		LocalOffset: 85,85,299, 85,-85,299
+		MuzzleSequence: muzzle
+	AttackTurreted:
+	WithMuzzleOverlay:
+	WithSpriteTurret:
+	AutoTarget:
+	Cargo:
+		Types: Infantry
+		MaxWeight: 5
+		PipCount: 5
+		LoadingUpgrades: notmobile
+	SpawnActorOnDeath:
+		Actor: APC.Husk
+
+ARTY:
+	Inherits: ^Tank
+	Valued:
+		Cost: 600
+	Tooltip:
+		Name: Artillery
+		Description: Long-range artillery.\n  Strong vs Infantry, Vehicles and Buildings
+	Buildable:
+		BuildPaletteOrder: 60
+		Prerequisites: anyhq, ~techlevel.medium
+		Queue: Vehicle.Nod
+	Mobile:
+		TurnSpeed: 4
+		Speed: 85
+	Health:
+		HP: 75
+	Armor:
+		Type: Light
+	RevealsShroud:
+		Range: 8c0
+	Armament:
+		Weapon: ArtilleryShell
+		LocalOffset: 624,0,208
+		MuzzleSequence: muzzle
+	AttackFrontal:
+	WithMuzzleOverlay:
+	AutoTarget:
+		InitialStanceAI: Defend
+	SpawnActorOnDeath:
+		Actor: ARTY.Husk
+	Explodes:
+		Weapon: ArtilleryShell
+		EmptyWeapon: UnitExplode
+		LoadedChance: 75
+
+FTNK:
+	Inherits: ^Tank
+	Valued:
+		Cost: 600
+	Tooltip:
+		Name: Flame Tank
+		Description: Heavily armored flame-throwing vehicle.\n  Strong vs Infantry, Buildings and Vehicles\n  Weak vs Tanks
+	Buildable:
+		BuildPaletteOrder: 50
+		Prerequisites: anyhq, ~techlevel.medium
+		Queue: Vehicle.Nod
+	Mobile:
+		TurnSpeed: 7
+		Speed: 99
+	Health:
+		HP: 270
+	Armor:
+		Type: Heavy
+	RevealsShroud:
+		Range: 5c0
+	Armament:
+		Weapon: BigFlamer
+		LocalOffset: 512,128,42, 512,-128,42
+		MuzzleSequence: muzzle
+	AttackFrontal:
+	AutoTarget:
+	WithMuzzleOverlay:
+	Explodes:
+		Weapon: FlametankExplode
+		EmptyWeapon: FlametankExplode
+	SpawnActorOnDeath:
+		Actor: FTNK.Husk
+
+BGGY:
+	Inherits: ^Vehicle
+	Valued:
+		Cost: 300
+	Tooltip:
+		Name: Nod Buggy
+		Description: Fast scout and anti-infantry vehicle.\n  Strong vs Infantry\n  Weak vs Tanks
+	Buildable:
+		BuildPaletteOrder: 20
+		Prerequisites: afld
+		Queue: Vehicle.Nod
+	Mobile:
+		TurnSpeed: 10
+		Speed: 170
+	Health:
+		HP: 120
+	Armor:
+		Type: Light
+	RevealsShroud:
+		Range: 8c0
+	Turreted:
+		TurnSpeed: 10
+		Offset: -43,0,128
+	Armament:
+		Weapon: MachineGun
+		LocalOffset: 171,0,43
+		MuzzleSequence: muzzle
+	AttackTurreted:
+	WithMuzzleOverlay:
+	WithSpriteTurret:
+	AutoTarget:
+	SpawnActorOnDeath:
+		Actor: BGGY.Husk
+
+BIKE:
+	Inherits: ^Vehicle
+	Valued:
+		Cost: 500
+	Tooltip:
+		Name: Recon Bike
+		Description: Fast scout vehicle, armed with\nrockets.\nCan attack Aircraft.\n  Strong vs Vehicles, Tanks\n  Weak vs Infantry
+	Buildable:
+		BuildPaletteOrder: 30
+		Prerequisites: afld
+		Queue: Vehicle.Nod
+	Mobile:
+		TurnSpeed: 10
+		Speed: 213
+		TerrainSpeeds:
+			Clear: 70
+			Rough: 35
+			Road: 100
+			Tiberium: 35
+			BlueTiberium: 35
+			Beach: 35
+	Health:
+		HP: 120
+	Armor:
+		Type: Light
+	RevealsShroud:
+		Range: 8c0
+	Armament:
+		Weapon: BikeRockets
+		LocalOffset: -128, -170, 170, -128, 170, 170
+		LocalYaw: 100, -100
+	AttackFrontal:
+	AutoTarget:
+	SpawnActorOnDeath:
+		Actor: BIKE.Husk
+
+JEEP:
+	Inherits: ^Vehicle
+	Valued:
+		Cost: 400
+	Tooltip:
+		Name: Hum-Vee
+		Description: Fast scout and anti-infantry vehicle.\n  Strong vs Infantry\n  Weak vs Tanks
+	Buildable:
+		BuildPaletteOrder: 20
+		Prerequisites: weap
+		Queue: Vehicle.GDI
+	Mobile:
+		TurnSpeed: 10
+		Speed: 156
+	Health:
+		HP: 160
+	Armor:
+		Type: Light
+	RevealsShroud:
+		Range: 8c0
+	Turreted:
+		TurnSpeed: 10
+		Offset: -85,0,128
+	Armament:
+		Weapon: MachineGun
+		LocalOffset: 171,0,85
+		MuzzleSequence: muzzle
+	AttackTurreted:
+	WithMuzzleOverlay:
+	WithSpriteTurret:
+	AutoTarget:
+	SpawnActorOnDeath:
+		Actor: JEEP.Husk
+
+LTNK:
+	Inherits: ^Tank
+	Valued:
+		Cost: 700
+	Tooltip:
+		Name: Light Tank
+		Description: Fast, light tank.\n  Strong vs Vehicles, Tanks\n  Weak vs Infantry
+	Buildable:
+		BuildPaletteOrder: 40
+		Prerequisites: anyhq, ~techlevel.medium
+		Queue: Vehicle.Nod
+	Mobile:
+		TurnSpeed: 7
+		Speed: 110
+	Health:
+		HP: 340
+	Armor:
+		Type: Heavy
+	RevealsShroud:
+		Range: 6c0
+	Turreted:
+		TurnSpeed: 7
+	Armament:
+		Weapon: 70mm
+		Recoil: 85
+		RecoilRecovery: 17
+		LocalOffset: 720,0,90
+		MuzzleSequence: muzzle
+	AttackTurreted:
+	WithMuzzleOverlay:
+	WithSpriteTurret:
+	AutoTarget:
+	SpawnActorOnDeath:
+		Actor: LTNK.Husk
+
+MTNK:
+	Inherits: ^Tank
+	Valued:
+		Cost: 800
+	Tooltip:
+		Name: Medium Tank
+		Description: General-Purpose GDI Tank.\n  Strong vs Tanks, Vehicles\n  Weak vs Infantry
+	Buildable:
+		BuildPaletteOrder: 40
+		Prerequisites: anyhq, ~techlevel.medium
+		Queue: Vehicle.GDI
+	Mobile:
+		Speed: 85
+	Health:
+		HP: 450
+	Armor:
+		Type: Heavy
+	RevealsShroud:
+		Range: 6c0
+	Turreted:
+		TurnSpeed: 5
+	Armament:
+		Weapon: 120mm
+		Recoil: 128
+		RecoilRecovery: 26
+		LocalOffset: 768,0,90
+		MuzzleSequence: muzzle
+	AttackTurreted:
+	WithMuzzleOverlay:
+	WithSpriteTurret:
+	AutoTarget:
+	SpawnActorOnDeath:
+		Actor: MTNK.Husk
+	SelectionDecorations:
+		VisualBounds: 28,28
+
+HTNK:
+	Inherits: ^Tank
+	Valued:
+		Cost: 1500
+	Tooltip:
+		Name: Mammoth Tank
+		Description: Heavily armored GDI Tank.\nCan attack Aircraft.\n  Strong vs Everything
+	Buildable:
+		BuildPaletteOrder: 60
+		Prerequisites: eye, ~techlevel.high
+		Queue: Vehicle.GDI
+	Mobile:
+		Crushes: wall, heavywall, crate, infantry
+		Speed: 56
+		TurnSpeed: 3
+	Health:
+		HP: 800
+	Armor:
+		Type: Heavy
+	RevealsShroud:
+		Range: 6c0
+	WithSpriteTurret:
+	Turreted:
+		TurnSpeed: 3
+	Armament@PRIMARY:
+		Weapon: 120mmDual
+		LocalOffset: 900,180,340, 900,-180,340
+		Recoil: 170
+		RecoilRecovery: 42
+		MuzzleSequence: muzzle
+	Armament@SECONDARY:
+		Name: secondary
+		Weapon: MammothMissiles
+		LocalOffset: -85,384,340, -85,-384,340
+		LocalYaw: -100, 100
+		Recoil: 10
+		MuzzleSequence: muzzle
+	AttackTurreted:
+	WithMuzzleOverlay:
+	AutoTarget:
+	SelfHealing:
+		Delay: 10
+		HealIfBelow: 50
+		DamageCooldown: 200
+	SpawnActorOnDeath:
+		Actor: HTNK.Husk
+	SelectionDecorations:
+		VisualBounds: 34,34,0,-3
+
+MSAM:
+	Inherits: ^Tank
+	Valued:
+		Cost: 1000
+	Tooltip:
+		Name: Rocket Launcher
+		Description: Long range rocket artillery.\n  Strong vs all Ground units.
+	Buildable:
+		BuildPaletteOrder: 50
+		Prerequisites: anyhq, ~techlevel.medium
+		Queue: Vehicle.GDI
+	Mobile:
+		Speed: 85
+		TurnSpeed: 4
+	Health:
+		HP: 120
+	Armor:
+		Type: Light
+	RevealsShroud:
+		Range: 8c0
+	Turreted:
+		TurnSpeed: 255
+		Offset: -256,0,128
+	Armament@PRIMARY:
+		Weapon: 227mm
+		LocalOffset: 213,128,0, 213,-128,0
+	Armament@SECONDARY:
+		Weapon: 227mm
+		LocalOffset: 213,-128,0, 213,128,0
+	AttackFrontal:
+	WithSpriteTurret:
+		AimSequence: aim
+	AutoTarget:
+	SpawnActorOnDeath:
+		Actor: MSAM.Husk
+
+MLRS:
+	Inherits: ^Tank
+	Valued:
+		Cost: 600
+	Tooltip:
+		Name: Mobile S.A.M.
+		Description: Powerful anti-air unit.\nCannot attack Ground units.
+	Buildable:
+		BuildPaletteOrder: 70
+		Prerequisites: anyhq, ~techlevel.medium
+		Queue: Vehicle.Nod
+	Mobile:
+		Speed: 99
+		TurnSpeed: 7
+	Health:
+		HP: 120
+	Armor:
+		Type: Light
+	RevealsShroud:
+		Range: 8c0
+	Turreted:
+		TurnSpeed: 8
+		Offset: -128,0,128
+		RealignDelay: 0
+	Armament:
+		Weapon: Patriot
+		LocalOffset: 0,-171,0, 0,171,0
+	AmmoPool:
+		Ammo: 2
+		PipCount: 0
+		SelfReloads: true
+		ReloadCount: 1
+		SelfReloadDelay: 45
+	AttackTurreted:
+	WithReloadingSpriteTurret:
+		AmmoPoolName: primary
+	AutoTarget:
+		InitialStanceAI: Defend
+	RenderRangeCircle:
+	SpawnActorOnDeath:
+		Actor: MLRS.Husk
+
+STNK:
+	Inherits: ^Vehicle
+	Valued:
+		Cost: 900
+	Tooltip:
+		Name: Stealth Tank
+		Description: Long-range missile tank that can cloak.\nCan attack Aircraft.\nHas weak armor. Can be spotted by infantry and defense structures.\n  Strong vs Vehicles, Tanks\n  Weak vs Infantry.
+	Buildable:
+		BuildPaletteOrder: 90
+		Prerequisites: tmpl, ~techlevel.high
+		Queue: Vehicle.Nod
+	Mobile:
+		TurnSpeed: 10
+		Speed: 142
+		Crushes: crate, infantry
+	Health:
+		HP: 150
+	Armor:
+		Type: Light
+	RevealsShroud:
+		Range: 7c0
+	Cloak:
+		-UpgradeTypes:
+		InitialDelay: 90
+		CloakDelay: 90
+		CloakSound: trans1.aud
+		UncloakSound: trans1.aud
+	Armament:
+		Weapon: 227mm.stnk
+		LocalOffset: 213,43,128, 213,-43,128
+	AttackFrontal:
+	AutoTarget:
+		InitialStance: HoldFire
+		InitialStanceAI: ReturnFire
+	Targetable:
+	SpawnActorOnDeath:
+		Actor: STNK.Husk
+	-MustBeDestroyed:
+
+MHQ:
+	Inherits: ^Vehicle
+	Valued:
+		Cost: 1000
+	Tooltip:
+		Name: Mobile HQ
+		Description: Mobile base of operations
+	Health:
+		HP: 200
+	Armor:
+		Type: Light
+	Mobile:
+		Speed: 85
+	RevealsShroud:
+		Range: 6c0
+	WithIdleOverlay@SPINNER:
+		Sequence: spinner
+		Offset: -256,0,256

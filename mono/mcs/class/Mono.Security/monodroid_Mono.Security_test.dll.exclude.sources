@@ -1,0 +1,3 @@
+#include monodroid_Mono.Security_test.dll.build-failure-exclude.sources
+#include monodroid_Mono.Security_test.dll.new-exclude.sources
+

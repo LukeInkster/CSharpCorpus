@@ -1,0 +1,149 @@
+MCV.Husk:
+	Inherits: ^Husk
+	Tooltip:
+		Name: Mobile Construction Vehicle (Destroyed)
+		Icon: mcvicnh
+	TransformOnCapture:
+		IntoActor: mcv
+	RenderSprites:
+		Image: mcv.destroyed
+
+HARV.Husk:
+	Inherits: ^Husk
+	Tooltip:
+		Name: Harvester (Destroyed)
+		Icon: harvicnh
+	TransformOnCapture:
+		IntoActor: harv
+	RenderSprites:
+		Image: harv.destroyed
+
+APC.Husk:
+	Inherits: ^Husk
+	Tooltip:
+		Name: APC (Destroyed)
+		Icon: apcicnh
+	TransformOnCapture:
+		IntoActor: apc
+	RenderSprites:
+		Image: apc.destroyed
+
+FTNK.Husk:
+	Inherits: ^Husk
+	Tooltip:
+		Name: Flame Tank (Destroyed)
+		Icon: ftnkicnh
+	TransformOnCapture:
+		IntoActor: ftnk
+	RenderSprites:
+		Image: ftnk.destroyed
+
+ARTY.Husk:
+	Inherits: ^Husk
+	Tooltip:
+		Name: Artillery (Destroyed)
+		Icon: artyicnh
+	TransformOnCapture:
+		IntoActor: arty
+	RenderSprites:
+		Image: arty.destroyed
+
+BGGY.Husk:
+	Inherits: ^Husk
+	Tooltip:
+		Name: Nod Buggy (Destroyed)
+		Icon: bggyicnh
+	TransformOnCapture:
+		IntoActor: bggy
+	RenderSprites:
+		Image: bggy.destroyed
+
+BIKE.Husk:
+	Inherits: ^Husk
+	Tooltip:
+		Name: Recon Bike (Destroyed)
+		Icon: bikeicnh
+	TransformOnCapture:
+		IntoActor: bike
+	RenderSprites:
+		Image: bike.destroyed
+
+JEEP.Husk:
+	Inherits: ^Husk
+	Tooltip:
+		Name: Hum-Vee (Destroyed)
+		Icon: jeepicnh
+	TransformOnCapture:
+		IntoActor: jeep
+	RenderSprites:
+		Image: jeep.destroyed
+
+LTNK.Husk:
+	Inherits: ^Husk
+	Tooltip:
+		Name: Light Tank (Destroyed)
+		Icon: ltnkicnh
+	ThrowsParticle@turret:
+		Anim: turret
+	TransformOnCapture:
+		IntoActor: ltnk
+	RenderSprites:
+		Image: ltnk.destroyed
+
+MTNK.Husk:
+	Inherits: ^Husk
+	Tooltip:
+		Name: Medium Tank (Destroyed)
+		Icon: mtnkicnh
+	ThrowsParticle@turret:
+		Anim: turret
+	TransformOnCapture:
+		IntoActor: mtnk
+	RenderSprites:
+		Image: mtnk.destroyed
+
+HTNK.Husk:
+	Inherits: ^Husk
+	Tooltip:
+		Name: Mammoth Tank (Destroyed)
+		Icon: htnkicnh
+	ThrowsParticle@turret:
+		Anim: turret
+	TransformOnCapture:
+		IntoActor: htnk
+	RenderSprites:
+		Image: htnk.destroyed
+
+MSAM.Husk:
+	Inherits: ^Husk
+	Tooltip:
+		Name: Rocket Launcher (Destroyed)
+		Icon: msamicnh
+	ThrowsParticle@turret:
+		Anim: turret
+	TransformOnCapture:
+		IntoActor: msam
+	RenderSprites:
+		Image: msam.destroyed
+
+MLRS.Husk:
+	Inherits: ^Husk
+	Tooltip:
+		Name: Mobile S.A.M. (Destroyed)
+		Icon: mlrsicnh
+	ThrowsParticle@turret:
+		Anim: turret
+	TransformOnCapture:
+		IntoActor: mlrs
+	RenderSprites:
+		Image: mlrs.destroyed
+
+STNK.Husk:
+	Inherits: ^Husk
+	Tooltip:
+		Name: Stealth Tank (Destroyed)
+		Icon: stnkicnh
+	TransformOnCapture:
+		IntoActor: stnk
+	RenderSprites:
+		Image: stnk.destroyed

@@ -1,0 +1,30 @@
+﻿<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\dir.targets" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+
+  <!-- OSS sign assemblies after compile runs. -->
+  <Import Project="$(ToolsDir)\sign.targets" Condition="Exists('$(ToolsDir)\sign.targets')" />
+
+  <Import Project="$(MicroBuildDir)\MicroBuild.Core.targets" Condition="Exists('$(MicroBuildDir)\MicroBuild.Core.targets')" />
+  <Import Project="$(GitVersioningDir)dotnet\Nerdbank.GitVersioning.targets" />
+
+  <!-- Update localized resources from the default English ones-->
+  <Import Project="UpdateLocalizedResources.targets" Condition="'$(LocalizedBuild)' == 'true' and '$(IsTestProject)' != 'true'"/>
+
+  <!-- Restore packages -->
+  <PropertyGroup>
+    <PackagesConfig Condition="Exists('$(MSBuildProjectDirectory)\packages.config')">$(MSBuildProjectDirectory)\packages.config</PackagesConfig>
+    <RestorePackages Condition="'$(RestorePackages)' == '' and Exists('$(PackagesConfig)')">true</RestorePackages>
+    <RestorePackagesSemaphore>$(PackagesDir)$(MSBuildProjectFile).package.restored</RestorePackagesSemaphore>
+  </PropertyGroup>
+
+  <Target Name="RestorePackages"
+          BeforeTargets="ResolveNuGetPackages"
+          Inputs="$(PackagesConfig)"
+          Outputs="$(RestorePackagesSemaphore)"
+          Condition="'$(RestorePackages)' == 'true'">
+    <Exec Command="$(NugetRestoreCommand) &quot;$(PackagesConfig)&quot;" StandardOutputImportance="Low" />
+    <Touch Files="$(RestorePackagesSemaphore)" AlwaysCreate="true" />
+  </Target>
+
+</Project>

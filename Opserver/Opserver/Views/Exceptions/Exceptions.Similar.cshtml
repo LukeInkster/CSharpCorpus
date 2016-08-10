@@ -1,0 +1,26 @@
+﻿@using StackExchange.Opserver.Controllers
+@model StackExchange.Opserver.Views.Exceptions.ExceptionsModel
+@{
+    var e = Model.Exception;
+    var log = Model.SelectedLog;
+    var exceptions = Model.Errors;
+
+    this.SetPageTitle(Model.Title);
+}
+@section head {
+    <script>
+        $(function () { Status.Exceptions.init({ log: '@log', id: '@e.GUID.ToString()', enablePreviews: @(Current.Settings.Exceptions.EnablePreviews ? "true" : "false"), showingDeleted: true }); });
+    </script>
+}
+<h5 class="page-header">
+    <a href="@Url.Action(nameof(ExceptionsController.Exceptions))">Exceptions</a> 
+    <span class="text-muted">/</span> 
+    <a href="@Url.Action(nameof(ExceptionsController.Exceptions), new { log })">@e.ApplicationName</a>
+    <span class="text-muted">/</span> 
+    @e.Type
+</h5>
+<p class="small text-danger">@e.Message</p>
+<div>
+    @Html.Partial("Exceptions.Table", Model)
+    <div class="no-content@(exceptions.Any() ? " hidden" : "")">No similar exceptions in @Model.SelectedLog</div>
+</div>

@@ -1,0 +1,17 @@
+﻿@using StackExchange.Opserver.Controllers
+@using StackExchange.Opserver.Data.Dashboard
+@using StackExchange.Opserver.Views.Dashboard
+@model DashboardModel
+@{
+    this.SetPageTitle("Dashboard");
+    this.SetTopNodes(DashboardData.AllNodes, "Dashboard", url: Url.Action(nameof(DashboardController.Node)));
+}
+@section head {
+    <script>
+    $(function() {
+        Status.Dashboard.init({ refresh: 60, filter: '@(Model.Filter)' });
+    });
+    </script>}
+<div>
+    @Html.Partial("Dashboard.Table", Model)
+</div>

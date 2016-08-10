@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "Roslyn.Microsoft.Build": "0.0.2"
+  },
+  "frameworks": {
+    "net46": { }
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "version": "1.1.0-alpha1-*",
+  "description": "Shared test suite for Entity Framework Core database providers.",
+  "packOptions": {
+    "tags": [
+      "Entity Framework Core",
+      "entity-framework-core",
+      "EF",
+      "Data",
+      "O/RM"
+    ]
+  },
+  "buildOptions": {
+    "warningsAsErrors": true,
+    "keyFile": "../../tools/Key.snk",
+    "nowarn": [
+      "CS1591"
+    ],
+    "xmlDoc": true
+  },
+  "dependencies": {
+    "System.Runtime.InteropServices.RuntimeInformation": "4.0.0-*",
+    "Microsoft.EntityFrameworkCore.InMemory": "1.1.0-*",
+    "Microsoft.Extensions.RuntimeEnvironment.Sources": {
+      "version": "1.1.0-*",
+      "type": "build"
+    },
+    "xunit": "2.2.0-*"
+  },
+  "frameworks": {
+    "netstandard1.3": {
+      "dependencies": {
+        "Microsoft.CSharp": "4.0.1-*",
+        "System.IO.FileSystem": "4.0.1-*"
+      }
+    },
+    "net451": {
+      "frameworkAssemblies": {
+        "System.Collections": {
+          "type": "build"
+        },
+        "System.Diagnostics.Debug": {
+          "type": "build"
+        },
+        "System.Globalization": {
+          "type": "build"
+        },
+        "System.Linq": {
+          "type": "build"
+        },
+        "System.ObjectModel": {
+          "type": "build"
+        },
+        "System.Reflection": {
+          "type": "build"
+        },
+        "System.Reflection.Extensions": {
+          "type": "build"
+        },
+        "System.Runtime": {
+          "type": "build"
+        },
+        "System.Runtime.Extensions": {
+          "type": "build"
+        },
+        "System.Text.RegularExpressions": {
+          "type": "build"
+        },
+        "System.Threading.Tasks": {
+          "type": "build"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,53 @@
+﻿@using StackExchange.Opserver.Controllers
+@using StackExchange.Opserver.Data.Exceptions
+@model StackExchange.Opserver.Views.Exceptions.ExceptionsModel
+@{
+    var group = Model.SelectedGroup;
+    var log = Model.SelectedLog;
+    var exceptions = Model.Errors;
+
+    this.SetPageTitle(Model.Title);
+    this.SetTopSearch((log.HasValue() ? log + " " : "") + "Exceptions",
+              Model.Search,
+              Url.Action(nameof(ExceptionsController.Search)),
+              Model.SearchDictionary);
+}
+@section head {
+    <script>
+        $(function() { Status.Exceptions.init({ refresh: 120, group: '@group', log: '@log', sort: '@Model.Sort', loadMore: @(Model.LoadAsyncSize), enablePreviews: @(Current.Settings.Exceptions.EnablePreviews ? "true" : "false") }); });
+    </script>
+}
+<div class="js-refresh" data-name="exceptions-header">
+    <h5 class="page-header">
+        Exception Logs
+        @if (!Model.ShowAll)
+        {
+            @: <a class="pull-right" href="@Url.Action(nameof(ExceptionsController.Exceptions))">View All</a>
+        }
+        @if (ExceptionStores.Stores?.Any() == true)
+        {
+            @Helpers.PollNow(ExceptionStores.Stores?.First().NodeType)
+        }
+    </h5>
+    <div class="js-exception-counts">
+        @{ Html.RenderPartial("Exceptions.Navigation", Model); }
+    </div>
+</div>
+@if (ExceptionStores.Stores?.Any(s => s.MonitorStatus == MonitorStatus.Good) ?? false)
+{
+    <div class="js-refresh" data-name="exceptions-list">
+        @Html.Partial("Exceptions.Table", Model)
+        <div class="js-bottom-loader horizontal-load"><div class="sk-wave"><div></div><div></div><div></div><div></div><div></div></div></div>
+        <div class="js-bottom-no-exceptions no-content text-success@(exceptions.Any() ? " hidden" : "")">No @log exceptions</div>
+        <div class="js-bottom-no-more no-content small@(Model.HasMore ? null : " hidden")">End of active exception log</div>
+    </div>
+}
+else
+{
+    <div class="js-refresh" data-name="exceptions-list">
+        <div class="alert alert-warning">
+            <h5>Nothing to display.</h5>
+            <p>There was an error fetching from all exception stores.</p>
+        </div>
+    </div>
+}

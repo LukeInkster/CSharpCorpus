@@ -1,0 +1,9 @@
+﻿@layout HtmlReport
+@model ModelErrorResponse
+
+<h5>ModelError:    @ModelError.AsRawJson()</h5>
+<p>ResponseStatus: @this.GetErrorStatus().AsRawJson()</p>
+<p>ResponseStatus: @this.GetErrorStatus().ErrorCode</p>
+<p>ResponseStatus: @this.GetErrorStatus().Message</p>
+
+<!--view:ModelError.cshtml-->

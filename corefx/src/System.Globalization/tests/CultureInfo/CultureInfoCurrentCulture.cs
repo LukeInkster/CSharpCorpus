@@ -1,0 +1,167 @@
+// Licensed to the .NET Foundation under one or more agreements.
+// The .NET Foundation licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
+
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Threading.Tasks;
+using Xunit;
+
+namespace System.Globalization.Tests
+{
+    public class CurrentCultureTests : RemoteExecutorTestBase
+    {
+        [Fact]
+        public void CurrentCulture()
+        {
+            RemoteInvoke(() =>
+            {
+                CultureInfo newCulture = new CultureInfo(CultureInfo.CurrentCulture.Name.Equals("ja-JP", StringComparison.OrdinalIgnoreCase) ? "ar-SA" : "ja-JP");
+                CultureInfo.CurrentCulture = newCulture;
+
+                Assert.Equal(CultureInfo.CurrentCulture, newCulture);
+
+                newCulture = new CultureInfo("de-DE_phoneb");
+                CultureInfo.CurrentCulture = newCulture;
+
+                Assert.Equal(CultureInfo.CurrentCulture, newCulture);
+                Assert.Equal("de-DE_phoneb", newCulture.CompareInfo.Name);
+
+                return SuccessExitCode;
+            }).Dispose();
+        }
+
+        [Fact]
+        public void CurrentCulture_Set_Null_ThrowsArgumentNullException()
+        {
+            Assert.Throws<ArgumentNullException>("value", () => CultureInfo.CurrentCulture = null);
+        }
+
+        [Fact]
+        public void CurrentUICulture()
+        {
+            RemoteInvoke(() =>
+            {
+                CultureInfo newUICulture = new CultureInfo(CultureInfo.CurrentUICulture.Name.Equals("ja-JP", StringComparison.OrdinalIgnoreCase) ? "ar-SA" : "ja-JP");
+                CultureInfo.CurrentUICulture = newUICulture;
+
+                Assert.Equal(CultureInfo.CurrentUICulture, newUICulture);
+
+                newUICulture = new CultureInfo("de-DE_phoneb");
+                CultureInfo.CurrentUICulture = newUICulture;
+
+                Assert.Equal(CultureInfo.CurrentUICulture, newUICulture);
+                Assert.Equal("de-DE_phoneb", newUICulture.CompareInfo.Name);
+                return SuccessExitCode;
+            }).Dispose();
+        }
+
+        [Fact]
+        public void DefaultThreadCurrentCulture()
+        {
+            RemoteInvoke(() =>
+            {
+                CultureInfo newCulture = new CultureInfo(CultureInfo.DefaultThreadCurrentCulture == null || CultureInfo.DefaultThreadCurrentCulture.Name.Equals("ja-JP", StringComparison.OrdinalIgnoreCase) ? "ar-SA" : "ja-JP");
+                CultureInfo.DefaultThreadCurrentCulture = newCulture;
+
+                Task task = Task.Run(() =>
+                {
+                    Assert.Equal(CultureInfo.CurrentCulture, newCulture);
+                });
+                ((IAsyncResult)task).AsyncWaitHandle.WaitOne();
+                task.Wait();
+
+                return SuccessExitCode;
+            }).Dispose();
+        }
+
+        [Fact]
+        public void DefaultThreadCurrentUICulture()
+        {
+            RemoteInvoke(() =>
+            {
+                CultureInfo newUICulture = new CultureInfo(CultureInfo.DefaultThreadCurrentUICulture == null || CultureInfo.DefaultThreadCurrentUICulture.Name.Equals("ja-JP", StringComparison.OrdinalIgnoreCase) ? "ar-SA" : "ja-JP");
+                CultureInfo.DefaultThreadCurrentUICulture = newUICulture;
+
+                Task task = Task.Run(() =>
+                {
+                    Assert.Equal(CultureInfo.CurrentUICulture, newUICulture);
+                });
+                ((IAsyncResult)task).AsyncWaitHandle.WaitOne();
+                task.Wait();
+
+                return SuccessExitCode;
+            }).Dispose();
+        }
+
+        [Fact]
+        public void CurrentUICulture_Set_Null_ThrowsArgumentNullException()
+        {
+            Assert.Throws<ArgumentNullException>("value", () => CultureInfo.CurrentUICulture = null);
+        }
+
+        [PlatformSpecific(Xunit.PlatformID.AnyUnix)]
+        [Theory]
+        [InlineData("en-US.UTF-8", "en-US")]
+        [InlineData("en-US", "en-US")]
+        [InlineData("en_GB", "en-GB")]
+        [InlineData("fr-FR", "fr-FR")]
+        [InlineData("ru", "ru")]
+        public void CurrentCulture_BasedOnLangEnvVar(string langEnvVar, string expectedCultureName)
+        {
+            var psi = new ProcessStartInfo();
+            psi.Environment.Clear();
+
+            CopyHomeIfPresent(psi.Environment);
+            psi.Environment["LANG"] = langEnvVar;
+
+            RemoteInvoke(expected =>
+            {
+                Assert.NotNull(CultureInfo.CurrentCulture);
+                Assert.NotNull(CultureInfo.CurrentUICulture);
+
+                Assert.Equal(expected, CultureInfo.CurrentCulture.Name);
+                Assert.Equal(expected, CultureInfo.CurrentUICulture.Name);
+
+                return SuccessExitCode;
+            }, expectedCultureName, new RemoteInvokeOptions { StartInfo = psi }).Dispose();
+        }
+
+        [PlatformSpecific(Xunit.PlatformID.AnyUnix)]
+        [Theory]
+        [InlineData("")]
+        [InlineData(null)]
+        public void CurrentCulture_DefaultWithNoLang(string langEnvVar)
+        {
+            var psi = new ProcessStartInfo();
+            psi.Environment.Clear();
+
+            CopyHomeIfPresent(psi.Environment);
+            if (langEnvVar != null)
+            {
+               psi.Environment["LANG"] = langEnvVar;
+            }
+
+            RemoteInvoke(() =>
+            {
+                Assert.NotNull(CultureInfo.CurrentCulture);
+                Assert.NotNull(CultureInfo.CurrentUICulture);
+
+                Assert.Equal("", CultureInfo.CurrentCulture.Name);
+                Assert.Equal("", CultureInfo.CurrentUICulture.Name);
+
+                return SuccessExitCode;
+            }, new RemoteInvokeOptions { StartInfo = psi }).Dispose();
+        }
+
+        private static void CopyHomeIfPresent(IDictionary<string, string> environment)
+        {
+            string currentHome = Environment.GetEnvironmentVariable("HOME");
+
+            if (currentHome != null)
+            {
+                environment["HOME"] = currentHome;
+            }
+        }
+    }
+}

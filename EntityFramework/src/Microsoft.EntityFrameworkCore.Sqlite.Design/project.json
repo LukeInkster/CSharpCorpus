@@ -1,0 +1,30 @@
+{
+  "version": "1.1.0-alpha1-*",
+  "description": "Design-time Entity Framework Core functionality for SQLite",
+  "packOptions": {
+    "tags": [
+      "Entity Framework Core",
+      "entity-framework-core",
+      "EF",
+      "Data",
+      "O/RM",
+      "SQLite"
+    ]
+  },
+  "buildOptions": {
+    "warningsAsErrors": true,
+    "keyFile": "../../tools/Key.snk",
+    "xmlDoc": true,
+    "compile": {
+      "include": "../Shared/*.cs"
+    }
+  },
+  "dependencies": {
+    "Microsoft.EntityFrameworkCore.Relational.Design": "1.1.0-*",
+    "Microsoft.EntityFrameworkCore.Sqlite": "1.1.0-*"
+  },
+  "frameworks": {
+    "net451": {},
+    "netstandard1.3": {}
+  }
+}

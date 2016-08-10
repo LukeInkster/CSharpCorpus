@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), dir.props))\dir.props" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7F5F5134-00FE-4DE8-B20C-3DA8BA2EBA68}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>System.Runtime.Tests</RootNamespace>
+    <AssemblyName>System.Runtime.Tests</AssemblyName>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <NoWarn>1718</NoWarn>
+    <NugetTargetMoniker>.NETStandard,Version=v1.5</NugetTargetMoniker>
+  </PropertyGroup>
+  <!-- Default configurations to help VS understand the configurations -->
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Helpers.cs" />
+    <Compile Include="System\ActivatorTests.cs" />
+    <Compile Include="System\ArrayTests.cs" />
+    <Compile Include="System\AttributeTests.cs" />
+    <Compile Include="System\ArraySegmentTests.cs" />
+    <Compile Include="System\BooleanTests.cs" />
+    <Compile Include="System\BufferTests.cs" />
+    <Compile Include="System\ByteTests.cs" />
+    <Compile Include="System\CharTests.cs" />
+    <Compile Include="System\Collections\ObjectModel\CollectionTests.cs" />
+    <Compile Include="System\Collections\ObjectModel\CollectionTestBase.cs" />
+    <Compile Include="System\Collections\ObjectModel\ReadOnlyCollectionTests.cs" />
+    <Compile Include="System\ComponentModel\EditorBrowsableAttributeTests.cs" />
+    <Compile Include="System\ComponentModel\DefaultValueAttributeTests.cs" />
+    <Compile Include="System\DateTimeTests.cs" />
+    <Compile Include="System\DateTimeOffsetTests.cs" />
+    <Compile Include="System\DecimalTests.cs" />
+    <Compile Include="System\DelegateTests.cs" />
+    <Compile Include="System\DoubleTests.cs" />
+    <Compile Include="System\EnumTests.cs" />
+    <Compile Include="System\FieldAccessExceptionTests.cs" />
+    <Compile Include="System\GCTests.cs" />
+    <Compile Include="System\GuidTests.cs" />
+    <Compile Include="System\Int16Tests.cs" />
+    <Compile Include="System\Int32Tests.cs" />
+    <Compile Include="System\Int64Tests.cs" />
+    <Compile Include="System\IntPtrTests.cs" />
+    <Compile Include="System\IO\DirectoryNotFoundExceptionTests.cs" />
+    <Compile Include="System\IO\DirectoryNotFoundException.InteropTests.cs" />
+    <Compile Include="System\IO\Exceptions.HResults.cs" />
+    <Compile Include="System\IO\Exceptions.Utility.cs" />
+    <Compile Include="System\IO\FileLoadExceptionTests.cs" />
+    <Compile Include="System\IO\FileLoadException.InteropTests.cs" />
+    <Compile Include="System\IO\PathTooLongExceptionTests.cs" />
+    <Compile Include="System\IO\PathTooLongException.InteropTests.cs" />
+    <Compile Include="System\LazyTests.cs" />
+    <Compile Include="System\LazyOfTMetadataTests.cs" />
+    <Compile Include="System\MethodAccessExceptionTests.cs" />
+    <Compile Include="System\MissingFieldExceptionTests.cs" />
+    <Compile Include="System\MissingMethodExceptionTests.cs" />
+    <Compile Include="System\MulticastDelegateTests.cs" />
+    <Compile Include="System\NullableTests.cs" />
+    <Compile Include="System\ExceptionTests.cs" />
+    <Compile Include="System\ObjectTests.cs" />
+    <Compile Include="System\Runtime\CompilerServices\ConditionalWeakTableTests.cs" />
+    <Compile Include="System\Runtime\CompilerServices\StrongBoxTests.cs" />
+    <Compile Include="System\Runtime\CompilerServices\RuntimeHelpersTests.cs" />
+    <Compile Include="System\SByteTests.cs" />
+    <Compile Include="System\SingleTests.cs" />
+    <Compile Include="System\StringTests.cs" />
+    <Compile Include="System\String.SplitTests.cs" />
+    <Compile Include="System\Text\StringBuilderTests.cs" />
+    <Compile Include="System\Threading\WaitHandleTests.cs" />
+    <Compile Include="System\TimeSpanTests.cs" />
+    <Compile Include="System\TimeZoneInfoTests.cs" />
+    <Compile Include="System\TupleTests.cs" />
+    <Compile Include="System\TypeTests.cs" />
+    <Compile Include="System\UInt16Tests.cs" />
+    <Compile Include="System\UInt32Tests.cs" />
+    <Compile Include="System\UInt64Tests.cs" />
+    <Compile Include="System\UIntPtrTests.cs" />
+    <Compile Include="System\Uri.CreateStringTests.cs" />
+    <Compile Include="System\Uri.CreateUriTests.cs" />
+    <Compile Include="System\Uri.MethodsTests.cs" />
+    <Compile Include="System\ValueTypeTests.cs" />
+    <Compile Include="System\VersionTests.cs" />
+    <Compile Include="System\WeakReferenceTests.cs" />
+    <Compile Include="$(CommonTestPath)\System\RandomDataGenerator.cs">
+      <Link>Common\System\RandomDataGenerator.cs</Link>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="project.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\pkg\System.Runtime.pkgproj">
+      <Project>{1e689c1b-690c-4799-bde9-6e7990585894}</Project>
+      <Name>System.Runtime</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\System.Private.Uri\pkg\System.Private.Uri.pkgproj">
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), dir.targets))\dir.targets" />
+</Project>

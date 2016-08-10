@@ -1,0 +1,3 @@
+SUBDIRS = HTML \
+	Presets \
+	Images

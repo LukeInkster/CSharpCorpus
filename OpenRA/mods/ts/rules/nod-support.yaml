@@ -1,0 +1,252 @@
+NAWALL:
+	Inherits: ^Wall
+	Buildable:
+		Queue: Defense
+		BuildPaletteOrder: 1001
+		Prerequisites: ~structures.nod
+	-SoundOnDamageTransition:
+	Valued:
+		Cost: 50
+	CustomSellValue:
+		Value: 0
+	Tooltip:
+		Name: Concrete Wall
+		Description: Stops infantry and blocks enemy fire.\nCan NOT be crushed by tanks.
+	Health:
+		HP: 225
+	Armor:
+		Type: Concrete
+	BlocksProjectiles:
+		Height: 640
+	Crushable:
+		CrushClasses: heavywall
+	LineBuild:
+		NodeTypes: wall, turret
+
+NAGATE_A:
+	Inherits: ^Gate_A
+	Buildable:
+		Queue: Defense
+		BuildPaletteOrder: 100
+		Prerequisites: nahand, ~structures.nod
+	Tooltip:
+		Name: Nod Gate
+
+NAGATE_B:
+	Inherits: ^Gate_B
+	Buildable:
+		Queue: Defense
+		BuildPaletteOrder: 100
+		Prerequisites: nahand, ~structures.nod
+	Tooltip:
+		Name: Nod Gate
+
+NALASR:
+	Inherits: ^Defense
+	Valued:
+		Cost: 300
+	Tooltip:
+		Name: Laser Turret
+		Description: Basic base defense.\nRequires power to operate.\n  Strong vs Ground units\n  Weak vs Aircraft
+	Buildable:
+		Queue: Defense
+		Prerequisites: nahand, ~structures.nod
+		BuildPaletteOrder: 50
+	Building:
+	Selectable:
+		Bounds: 40, 30, -8, -6
+	DisabledOverlay:
+	Health:
+		HP: 500
+	Armor:
+		Type: Wood
+	RevealsShroud:
+		Range: 7c0
+	DetectCloaked:
+		Range: 3c0
+	Turreted:
+		TurnSpeed: 10
+		InitialFacing: 224
+		Offset: 298,-171,288
+	AttackTurreted:
+	Armament:
+		Weapon: TurretLaserFire
+		LocalOffset: 352, 0, 224
+	RenderVoxels:
+	WithVoxelTurret:
+	Power:
+		Amount: -40
+	SelectionDecorations:
+		VisualBounds: 40, 36, -8, -8
+	BodyOrientation:
+		QuantizedFacings: 0
+
+NAOBEL:
+	Inherits: ^Defense
+	Valued:
+		Cost: 1500
+	Tooltip:
+		Name: Obelisk of Light
+		Description: Advanced base defense.\nRequires power to operate.\n  Strong vs Ground units\n  Weak vs Aircraft
+	Buildable:
+		Queue: Defense
+		BuildPaletteOrder: 90
+		Prerequisites: natech, ~structures.nod
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	Selectable:
+		Bounds: 88, 42, 0, -6
+	RequiresPower:
+	DisabledOverlay:
+	Health:
+		HP: 725
+	Armor:
+		Type: Wood
+	RevealsShroud:
+		Range: 8c0
+	Armament:
+		Weapon: ObeliskLaserFire
+		LocalOffset: 1400,210,800
+	AttackCharge:
+		ChargeAudio: obelpowr.aud
+		InitialChargeDelay: 120
+	WithChargeOverlay:
+		Sequence: active
+		Palette: player
+		IsPlayerPalette: true
+	WithIdleOverlay@LIGHTS:
+		Sequence: idle-lights
+	Power:
+		Amount: -150
+	SelectionDecorations:
+		VisualBounds: 88, 72, 0, -12
+
+NASAM:
+	Inherits: ^Defense
+	Valued:
+		Cost: 500
+	Tooltip:
+		Name: S.A.M. Site
+		Description: Nod Anti-Air base defense.\nRequires power to operate.\n  Strong vs Aircraft\n  Weak vs Ground units
+	Buildable:
+		Queue: Defense
+		Prerequisites: naradr, ~structures.nod
+		BuildPaletteOrder: 60
+	Selectable:
+		Bounds: 40, 30, -3, -8
+	RequiresPower:
+	DisabledOverlay:
+	Health:
+		HP: 600
+	Armor:
+		Type: Wood
+	BodyOrientation:
+		QuantizedFacings: 32
+	RenderRangeCircle:
+		RangeCircleType: aa
+	Turreted:
+		TurnSpeed: 10
+		InitialFacing: 224
+	AttackTurreted:
+	WithSpriteTurret:
+		Recoils: false
+	Armament:
+		Weapon: RedEye2
+		LocalOffset: 384,0,576
+	Power:
+		Amount: -30
+	SelectionDecorations:
+		VisualBounds: 40, 36, -3, -8
+
+GAARTY:
+	Inherits@1: ^DeployedVehicle
+	Valued:
+		Cost: 975
+	Tooltip:
+		Name: Deployed Artillery
+	Health:
+		HP: 300
+	Armor:
+		Type: Light
+	RevealsShroud:
+		Range: 9c0
+	Turreted:
+		TurnSpeed: 5
+		InitialFacing: 96
+		Offset: 0,0,256
+	Armament:
+		Weapon: 155mm
+		LocalOffset: 811,0,0
+		MuzzleSequence: muzzle
+	BodyOrientation:
+		QuantizedFacings: 32
+	RenderVoxels:
+		LightAmbientColor: 0.4, 0.4, 0.4
+	WithVoxelBarrel:
+		LocalOffset: 0,0,-256
+	WithVoxelTurret:
+	Transforms:
+		IntoActor: art2
+		Facing: 96
+		TransformSounds: place2.aud
+		NoTransformSounds:
+		Voice: Move
+	WithMuzzleOverlay:
+
+NAMISL:
+	Inherits: ^Building
+	Buildable:
+		Queue: Defense
+		BuildPaletteOrder: 100
+		Prerequisites: natech, ~structures.nod
+		BuildLimit: 1
+	Valued:
+		Cost: 1300
+	Tooltip:
+		Name: Nod Missile Silo
+		Description: Launches a devastating missile\nat a target location.\nRequires power to operate.\nMaximum 1 can be built.
+	ProvidesPrerequisite:
+		Prerequisite: tech
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	Selectable:
+		Bounds: 75,48
+	Health:
+		HP: 1000
+	Armor:
+		Type: Wood
+	RevealsShroud:
+		Range: 4c0
+	WithIdleOverlay@LIGHTS:
+		Sequence: idle-lights
+	Power:
+		Amount: -50
+	CanPowerDown:
+		IndicatorPalette: mouse
+		PowerupSpeech: EnablePower
+		PowerdownSpeech: DisablePower
+	RequiresPower:
+	DisabledOverlay:
+	ProvidesPrerequisite@buildingname:
+	SupportPowerChargeBar:
+	NukePower:
+		Cursor: nuke
+		Icon: clustermissile
+		ChargeTime: 540
+		Description: Cluster Missile
+		LongDesc: Launches a conventional warhead\nat a target location.
+		EndChargeSpeechNotification: ClusterMissileReady
+		SelectTargetSpeechNotification: SelectTarget
+		IncomingSpeechNotification: MissileLaunchDetected
+		LaunchSound: icbm1.aud
+		MissileWeapon: ClusterMissile
+		SpawnOffset: 0,427,0
+		DisplayTimer: False
+		DisplayBeacon: False
+		DisplayRadarPing: True
+		BeaconPoster:
+		CameraActor: camera
+	SelectionDecorations:
+		VisualBounds: 75,48

@@ -1,0 +1,32 @@
+{
+  "buildOptions": {
+    "warningsAsErrors": true,
+    "keyFile": "../../tools/Key.snk",
+    "preserveCompilationContext": true,
+    "copyToOutput": {
+      "include": "ReverseEngineering/**/*.expected"
+    }
+  },
+  "dependencies": {
+    "Microsoft.EntityFrameworkCore.Relational.Design.Specification.Tests": "1.1.0-*",
+    "Microsoft.EntityFrameworkCore.Sqlite.FunctionalTests": {
+      "target": "project"
+    },
+    "Microsoft.EntityFrameworkCore.Sqlite.Design": "1.1.0-*"
+  },
+  "publishOptions": {
+    "include": "ReverseEngineering/**/*.expected"
+  },
+  "testRunner": "xunit",
+  "frameworks": {
+    "netcoreapp1.0": {
+      "dependencies": {
+        "Microsoft.NETCore.App": {
+          "version": "1.0.0-*",
+          "type": "platform"
+        }
+      }
+    },
+    "net451": {}
+  }
+}

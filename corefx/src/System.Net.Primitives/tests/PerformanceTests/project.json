@@ -1,0 +1,29 @@
+{
+  "dependencies": {
+    "Microsoft.NETCore.Platforms": "1.0.2-beta-24403-05",
+    "System.Net.Primitives": "4.0.12-beta-24403-05",
+    "System.Runtime": "4.1.1-beta-24403-05",
+    "System.Runtime.Extensions": "4.1.1-beta-24403-05",
+    "System.Net.Primitives": {
+      "version": "4.0.11",
+      "exclude": "compile"
+    },
+    "test-runtime": {
+      "target": "project",
+      "exclude": "compile"
+    },
+    "Microsoft.xunit.netcore.extensions": "1.0.0-prerelease-00704-03",
+    "Microsoft.DotNet.BuildTools.TestSuite": "1.0.0-prerelease-00704-03",
+    "Microsoft.DotNet.xunit.performance": "1.0.0-alpha-build0039"
+  },
+  "frameworks": {
+    "netstandard1.3": {}
+  },
+  "supports": {
+    "coreFx.Test.netcoreapp1.0": {},
+    "coreFx.Test.net46": {},
+    "coreFx.Test.net461": {},
+    "coreFx.Test.net462": {},
+    "coreFx.Test.net463": {}
+  }
+}

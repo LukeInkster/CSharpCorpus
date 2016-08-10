@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "Microsoft.Tpl.Dataflow": "4.5.24",
+    "System.Collections.Immutable": "1.1.36"
+  },
+  "frameworks": {
+    "net46": { }
+  },
+  "runtimes": {
+    "win": {},
+    "win-x86": {},
+    "win-x64": {},
+  }
+}

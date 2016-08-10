@@ -1,0 +1,68 @@
+using System;
+using System.IO;
+using ServiceStack.Serialization;
+using ServiceStack.Text;
+using ServiceStack.Web;
+
+namespace ServiceStack
+{
+    public class JsonServiceClient
+        : ServiceClientBase, IJsonServiceClient
+    {
+        public override string Format
+        {
+            get { return "json"; }
+        }
+
+        public JsonServiceClient()
+        {
+        }
+
+        public JsonServiceClient(string baseUri) 
+        {
+            SetBaseUri(baseUri);
+        }
+
+        public JsonServiceClient(string syncReplyBaseUri, string asyncOneWayBaseUri) 
+            : base(syncReplyBaseUri, asyncOneWayBaseUri)
+        {
+        }
+
+        public override string ContentType
+        {
+            get { return string.Format("application/{0}", Format); }
+        }
+
+        public override void SerializeToStream(IRequest requestContext, object request, Stream stream)
+        {
+            JsonDataContractSerializer.Instance.SerializeToStream(request, stream);
+        }
+
+        public override T DeserializeFromStream<T>(Stream stream)
+        {
+            return JsonDataContractSerializer.Instance.DeserializeFromStream<T>(stream);
+        }
+
+        public override StreamDeserializerDelegate StreamDeserializer
+        {
+            get { return JsonSerializer.DeserializeFromStream; }
+        }
+
+        internal static JsonObject ParseObject(string json)
+        {
+            return JsonObject.Parse(json);
+        }
+
+        [Obsolete("No longer required, use json.FromJson<T>()")]
+        public static T FromJson<T>(string json)
+        {
+            return json.FromJson<T>();
+        }
+
+        [Obsolete("No longer required, use obj.ToJson()")]
+        public static string ToJson<T>(T o)
+        {
+            return o.ToJson();
+        }
+    }
+}

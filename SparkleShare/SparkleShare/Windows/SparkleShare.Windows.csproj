@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <ProjectGuid>{728483AA-E34B-4441-BF2C-C8BC2901E4E0}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AssemblyName>SparkleShare</AssemblyName>
+    <SchemaVersion>2.0</SchemaVersion>
+    <RootNamespace>SparkleShare</RootNamespace>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <ApplicationIcon>Images\sparkleshare-app.ico</ApplicationIcon>
+    <ReleaseVersion>
+    </ReleaseVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\bin</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <PlatformTarget>x86</PlatformTarget>
+    <DefineConstants>TRACE</DefineConstants>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <OutputPath>..\..\bin\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <WarningLevel>4</WarningLevel>
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Xml" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
+    <Reference Include="System.Xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\SparkleBubblesController.cs">
+      <Link>SparkleBubblesController.cs</Link>
+    </Compile>
+    <Compile Include="..\SparkleControllerBase.cs">
+      <Link>SparkleControllerBase.cs</Link>
+    </Compile>
+    <Compile Include="..\SparkleExtensions.cs">
+      <Link>SparkleExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\SparkleInvite.cs">
+      <Link>SparkleInvite.cs</Link>
+    </Compile>
+    <Compile Include="..\SparkleNoteController.cs">
+      <Link>SparkleNoteController.cs</Link>
+    </Compile>
+    <Compile Include="..\SparklePlugin.cs">
+      <Link>SparklePlugin.cs</Link>
+    </Compile>
+    <Compile Include="..\SparkleStatusIconController.cs">
+      <Link>SparkleStatusIconController.cs</Link>
+    </Compile>
+    <Compile Include="..\SparkleSetupController.cs" />
+    <Compile Include="SparkleEventLogWindow.xaml.cs">
+      <DependentUpon>SparkleEventLogWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SparkleNote.xaml.cs">
+      <DependentUpon>SparkleNote.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SparkleShortcut.cs" />
+    <Compile Include="SparkleUI.cs" />
+    <Compile Include="..\SparkleAboutController.cs" />
+    <Compile Include="..\SparkleAvatars.cs" />
+    <Compile Include="SparkleBubbles.cs" />
+    <Compile Include="SparkleAbout.cs" />
+    <Compile Include="SparkleController.cs" />
+    <Compile Include="SparkleSetup.cs" />
+    <Compile Include="SparkleStatusIcon.cs" />
+    <Compile Include="SparkleUIHelpers.cs" />
+    <Compile Include="..\SparkleEventLogController.cs">
+      <Link>SparkleEventLogController.cs</Link>
+    </Compile>
+    <Compile Include="SparkleSetupWindow.cs" />
+    <Compile Include="..\Program.cs">
+      <Link>Program.cs</Link>
+    </Compile>
+    <Compile Include="SparkleNotifyIcon.cs" />
+    <Compile Include="SparkleSpinner.cs" />
+  </ItemGroup>
+  <ProjectExtensions>
+    <VisualStudio />
+  </ProjectExtensions>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Service Include="{B4F97281-0DBD-4835-9ED8-7DFB966E87FF}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\Common\Images\about.png">
+      <Link>Images\about.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Common\Images\side-splash.png">
+      <Link>Images\side-splash.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Common\HTML\day-entry.html">
+      <Link>HTML\day-entry.html</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Common\HTML\event-entry.html">
+      <Link>HTML\event-entry.html</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Common\HTML\event-log.html">
+      <Link>HTML\event-log.html</Link>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Common\HTML\jquery.js">
+      <Link>HTML\jquery.js</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Common\Images\user-icon-default.png">
+      <Link>Images\user-icon-default.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Linux\Images\icons\document-added-12.png">
+      <Link>Images\document-added-12.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Linux\Images\icons\document-deleted-12.png">
+      <Link>Images\document-deleted-12.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Linux\Images\icons\document-edited-12.png">
+      <Link>Images\document-edited-12.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Linux\Images\icons\document-moved-12.png">
+      <Link>Images\document-moved-12.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Linux\Images\icons\process-working-22.png">
+      <Link>Images\process-working-22.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\process-syncing-down.png" />
+    <EmbeddedResource Include="Images\process-syncing-idle.png" />
+    <EmbeddedResource Include="Images\process-syncing-up.png" />
+    <EmbeddedResource Include="Images\process-syncing.png" />
+    <EmbeddedResource Include="..\Common\Images\tutorial-slide-1.png">
+      <Link>Images\tutorial-slide-1.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Common\Images\tutorial-slide-2.png">
+      <Link>Images\tutorial-slide-2.png</Link>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Common\Presets\github.png">
+      <Link>Presets\github.png</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\Common\Presets\gitorious.png">
+      <Link>Presets\gitorious.png</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\Common\Presets\own-server.png">
+      <Link>Presets\own-server.png</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\Common\Presets\bitbucket.png">
+      <Link>Presets\bitbucket.png</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\Common\Presets\ssnet.png">
+      <Link>Presets\ssnet.png</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\Common\Presets\planio.png">
+      <Link>Presets\planio.png</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Common\Presets\ssnet.xml">
+      <Link>Presets\ssnet.xml</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\Common\Presets\bitbucket.xml">
+      <Link>Presets\bitbucket.xml</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\Common\Presets\github.xml">
+      <Link>Presets\github.xml</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\Common\Presets\gitorious.xml">
+      <Link>Presets\gitorious.xml</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\Common\Presets\own-server.xml">
+      <Link>Presets\own-server.xml</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\Common\Presets\planio.xml">
+      <Link>Presets\planio.xml</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\folder.png" />
+    <EmbeddedResource Include="Images\process-syncing-error.png" />
+    <EmbeddedResource Include="Images\sparkleshare-app.ico" />
+    <EmbeddedResource Include="Images\sparkleshare-folder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\tutorial-slide-3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="..\Common\Images\text-balloon.png">
+      <Link>Images\text-balloon.png</Link>
+    </Resource>
+    <Content Include="Images\sparkleshare-folder.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="SparkleEventLogWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SparkleNote.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,30 @@
+{
+  "version": "1.1.0-alpha1-*",
+  "description": "Design-time Entity Framework Core Functionality for Microsoft SQL Server.",
+  "packOptions": {
+    "tags": [
+      "Entity Framework Core",
+      "entity-framework-core",
+      "EF",
+      "Data",
+      "O/RM",
+      "SQL Server"
+    ]
+  },
+  "buildOptions": {
+    "warningsAsErrors": true,
+    "keyFile": "../../tools/Key.snk",
+    "xmlDoc": true,
+    "compile": {
+      "include": "../Shared/*.cs"
+    }
+  },
+  "dependencies": {
+    "Microsoft.EntityFrameworkCore.SqlServer": "1.1.0-*",
+    "Microsoft.EntityFrameworkCore.Relational.Design": "1.1.0-*"
+  },
+  "frameworks": {
+    "net451": {},
+    "netstandard1.3": {}
+  }
+}

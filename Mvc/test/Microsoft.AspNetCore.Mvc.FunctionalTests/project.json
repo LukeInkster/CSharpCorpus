@@ -1,0 +1,59 @@
+{
+  "buildOptions": {
+    "define": [
+      "__RemoveThisBitTo__GENERATE_BASELINES",
+      "FUNCTIONAL_TESTS"
+    ],
+    "compile": {
+      "include": "../Microsoft.AspNetCore.Mvc.Formatters.Xml.Test/XmlAssert.cs"
+    },
+    "warningsAsErrors": true
+  },
+  "dependencies": {
+    "dotnet-test-xunit": "2.2.0-*",
+    "ApiExplorerWebSite": "1.0.0",
+    "ApplicationModelWebSite": "1.0.0",
+    "BasicWebSite": "1.0.0",
+    "ControllersFromServicesWebSite": "1.0.0",
+    "CorsWebSite": "1.0.0",
+    "ErrorPageMiddlewareWebSite": "1.0.0",
+    "FilesWebSite": "1.0.0",
+    "FiltersWebSite": "1.0.0",
+    "FormatterWebSite": "1.0.0",
+    "HtmlGenerationWebSite": "1.0.0",
+    "Microsoft.AspNetCore.Mvc": "1.1.0-*",
+    "Microsoft.AspNetCore.Mvc.Formatters.Xml": "1.1.0-*",
+    "Microsoft.AspNetCore.Mvc.TestCommon": {
+      "version": "1.1.0-*",
+      "type": "build"
+    },
+    "Microsoft.AspNetCore.Mvc.TestConfiguration": "1.0.0",
+    "Microsoft.AspNetCore.TestHost": "1.1.0-*",
+    "Microsoft.AspNetCore.WebUtilities": "1.1.0-*",
+    "Microsoft.Extensions.Configuration.Json": "1.1.0-*",
+    "Microsoft.Extensions.Logging.Testing": "1.1.0-*",
+    "MvcSandbox": "1.0.0",
+    "RazorPageExecutionInstrumentationWebSite": "1.0.0",
+    "RazorWebSite": "1.0.0",
+    "RoutingWebSite": "1.0.0",
+    "SimpleWebSite": "1.0.0",
+    "TagHelpersWebSite": "1.0.0",
+    "VersioningWebSite": "1.0.0",
+    "WebApiCompatShimWebSite": "1.0.0",
+    "XmlFormattersWebSite": "1.0.0",
+    "xunit": "2.2.0-*"
+  },
+  "testRunner": "xunit",
+  "frameworks": {
+    "netcoreapp1.0": {
+      "dependencies": {
+        "Microsoft.NETCore.App": {
+          "version": "1.0.0-*",
+          "type": "platform"
+        }
+      },
+      "imports": "portable-net451+win8"
+    },
+    "net451": {}
+  }
+}

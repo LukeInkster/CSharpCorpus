@@ -1,0 +1,7 @@
+symbolicate.cs
+LocationProvider.cs
+SeqPointInfo.cs
+StackFrameData.cs
+SymbolManager.cs
+Logger.cs
+../../class/Mono.Options/Mono.Options/Options.cs
